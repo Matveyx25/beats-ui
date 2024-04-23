@@ -1,0 +1,36 @@
+.wrapper{
+	width: 100%;
+	border-bottom: 1px solid #EEE;
+	position: relative;
+	z-index: 5;
+	background: #fff;
+}
+.flex{
+	display: flex;
+	padding: 2rem 0;
+	justify-content: space-between;
+	align-items: center;
+	.btns{
+		display: flex;
+		gap: .5rem;
+		align-items: center;
+		.btn{
+			width: fit-content;
+		}
+	}
+	@media (max-width: $mobile-max-width) {
+		padding: 1rem 0;
+	}
+}
+.logo{
+	flex-shrink: 0;
+	text-decoration: none;
+	img{
+		width: 12.8125rem;
+	}
+	@media (max-width: $mobile-max-width) {
+		img{
+			width: 9rem;
+		}
+	}
+}

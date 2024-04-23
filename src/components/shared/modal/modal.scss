@@ -1,0 +1,90 @@
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: all 0.2s ease-in;
+
+	.ReactModal__Content {
+		transition: all 0.2s;
+		transform: scale(0.9) translate(-55%, -55%);
+		transition-timing-function: cubic-bezier(0.275, 0.885, 0.32, 2);
+	}
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+
+	.ReactModal__Content {
+		transform: scale(1) translate(-50%, -50%);
+	}
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+
+	.ReactModal__Content {
+		transform: scale(0.9) translate(-55%, -55%);
+	}
+}
+
+.ReactModal{
+	&__Overlay {
+		z-index: 100;
+		background: rgba(20, 21, 22, 0.70) !important;
+	}
+	&__Content {
+		width: fit-content;
+		padding: 1rem !important;
+		border-radius: 1rem !important;
+		background: #FFF !important;
+		box-shadow: 0px 4px 20px 0px rgba(212, 217, 222, 0.25) !important;
+		border: none !important;
+		left: 50% !important;
+		top: 50% !important;
+		height: fit-content;
+		transform: translate(-50%, -50%);
+		max-height: calc(100svh - 40px);
+	}
+	&__Absolute-X{
+		position: absolute;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+		color: #4F5157;
+		right: 1.25rem;
+		top: 1.25rem;
+		&:hover{
+			transition: .4s color;
+			color: #000;
+		}
+	}
+	&__Header{
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		align-self: stretch;
+		justify-content: space-between;
+		color: $text-primary;
+		font-size: 1.25rem;
+		font-style: normal;
+		font-weight: 600;
+		line-height: normal;
+		letter-spacing: 0.025rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid $secondary-primary-20;
+		p{
+			padding: 0;
+			margin: 0;
+		}
+		button{
+			padding: 0;
+			border: none;
+			background: none;
+			cursor: pointer;
+			color: #4F5157;
+			&:hover{
+				transition: .4s color;
+				color: #000;
+			}
+		}
+	}
+}

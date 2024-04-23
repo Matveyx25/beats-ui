@@ -1,0 +1,134 @@
+
+
+.wrapper{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3.25rem 0;
+	@media (max-width: $mobile-max-width) {
+		padding: 0;
+	}
+}
+.card{
+	max-width: 32rem;
+	box-sizing: border-box;
+	display: flex;
+	padding: 3rem;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+	width: 100%;
+	border-radius: 1.25rem;
+	background: #FFF;
+	border: 1px solid rgba(167, 174, 184, 0.20);
+	@media (max-width: $mobile-max-width) {
+		padding: 1.5rem;
+		border: none;
+	}
+}
+.title{
+	color: $text-primary;
+	align-self: self-start;
+	margin-bottom: 1rem;
+}
+.error{
+	display: block;
+	width: 100%;
+	padding: .5rem 1rem ;
+	border: 1px solid $error-main;
+	color: $error-main;
+	background: rgba($error-light, .2);
+	border-radius: 0.5rem;
+}
+.form{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 1rem;
+}
+.button{
+	width: 100%;
+	margin-top: .5rem;
+}
+.or{
+	text-align: center;
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: $secondary-primary;
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	position: relative;
+	width: 100%;
+	&::before{
+		content: '';
+		display: block;
+		left: 0;
+		flex-grow: 1;
+		height: 1px;
+		background: rgba(167, 174, 184, 0.20);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	&::after{
+		content: '';
+		display: block;
+		left: 0;
+		flex-grow: 1;
+		height: 1px;
+		background: rgba(167, 174, 184, 0.20);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+.socialBtns{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+.input{
+	width: 100%;
+}
+.register{
+	color: $text-primary;
+	font-size: 0.875rem;
+	align-self: self-start;
+	margin-top: 1rem;
+	a{
+		display: inline;
+		color: $primary-main;
+		font-weight: 500;
+		text-decoration: none;
+		&:hover{
+			transition: .4s color;
+			color: $primary-main;
+		}
+	}
+}
+.checkbox{
+	width: fit-content;
+	svg{
+		min-width: 1.5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
+.rememberMe{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	a{
+		color: $primary-main;
+		text-decoration: none;
+		font-size: 1rem;
+		font-weight: 500;
+		&:hover{
+			transition: .4s color;
+			color: $primary-main;
+		}
+	}
+
+}

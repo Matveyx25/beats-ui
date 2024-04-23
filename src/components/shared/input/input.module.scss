@@ -1,0 +1,74 @@
+.flex{
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
+	width: 100%;
+	.label{
+		color: $text-secondary;
+		font-family: Inter;
+		font-size: 0.875rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 130%; /* 1.1375rem */
+		letter-spacing: 0.01563rem;
+		span{
+			color: $error-main;
+		}
+	}
+}
+.wrapper{
+	display: flex;
+	position: relative;
+	border-radius: 0.5rem;
+	border: 1px solid#E2E4E7;
+	background: #FFF;
+	align-items: center;
+	padding: 0.75rem 1rem;
+	gap: .75rem;
+	input{
+		border: none;
+		background: none;
+		outline: none;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 143.5%; /* 1.435rem */
+		flex: 1;
+	}
+	button{
+		border: none;
+		background: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		svg{
+			opacity: .4;
+			object-fit: contain;
+			&:hover{
+				transition: .4s opacity;
+				opacity: 1;
+			}
+		}
+	}
+	&:not(:disabled):hover{
+		border-color: $primary-main;
+		transition: .4s border-color;
+	}
+	&:not(:disabled):has(input:focus){
+		border-color: $primary-main;
+	}
+	&.isInvalid{
+		border-color: $error-main !important;
+		transition: .4s border-color;	
+	}
+}
+.error{
+	color: $error-main;
+	font-family: Inter;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 130%; /* 1.1375rem */
+	letter-spacing: 0.01563rem;
+}

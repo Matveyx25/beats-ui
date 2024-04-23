@@ -1,0 +1,102 @@
+
+
+@keyframes spin {
+	0%{transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+
+.loader{
+	animation: spin 1s infinite;
+}
+
+.fetching{
+	.iconWrapper{
+		animation: fadeIn .4s;
+	}
+}
+
+.button{
+	display: flex;
+	width: 14rem;
+	padding: 0.75rem 1.5rem;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	border-radius: 0.5rem;
+	border: none;
+	font-size: 1rem;
+	cursor: pointer;
+	text-decoration: none;
+	&.small{
+		padding: 0.75rem 1.2rem;
+		width: fit-content;
+		font-size: .75rem;
+	}
+	&.primary{
+		color: $primary-contrast;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		background: $primary-main;
+		&:hover{
+			transition: .4s background;
+			background: $primary-light;
+		}
+		&:active{
+			transition: .2s color;
+			background: $primary-dark;	
+		}
+		&:disabled, &:disabled:hover, &:disabled:active{
+			color: $secondary-primary;
+			background: rgba($secondary-primary, .1);
+			cursor: default;
+		}
+	}
+	&.telegram{
+		color: $primary-contrast;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		background: #2AABEE;
+		img{
+			filter: brightness(0) saturate(100%) invert(97%) sepia(100%) saturate(0%) hue-rotate(48deg) brightness(105%) contrast(104%);
+			width: 15.2px;
+		}
+		&:hover{
+			transition: .4s background;
+			background: #71c5f2;
+		}
+		&:active{
+			transition: .2s background;
+			background: #3792c3;
+		}
+		&:disabled, &:disabled:hover, &:disabled:active{
+			color: $secondary-primary;
+			background: rgba($secondary-primary, .1);
+			cursor: default;
+		}
+	}
+	&.secondary{
+		border-radius: 0.5rem;
+		border: 2px solid #EEE;
+		background: $primary-contrast;
+		color: $secondary-primary;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		&:hover{
+			transition: .4s background;
+			background: rgba($secondary-primary, .2);
+		}
+		&:active{
+			transition: .2s background color;
+			color: #fff;
+			background: $secondary-primary;
+		}
+		&:disabled, &:disabled:hover, &:disabled:active{
+			color: rgba($secondary-primary, .2);
+			cursor: default;
+		}
+	}
+}
