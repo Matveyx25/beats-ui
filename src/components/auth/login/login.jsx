@@ -18,18 +18,17 @@ export const Login = ({handleSubmit, error, formState, methods}) => {
 
 	return (
 		<div className={s.wrapper}>
+			<div className={s.bg}>
+				<img src='/images/bg-login.jpg'/>
+			</div>
 			<div className={s.card}>
 				<h2 className={s.title}>
-					Авторизация
-					<p className={s.register}>
-						Новый пользователь?
-						<NavLink to={'/sign-up'}> Создать аккаунт</NavLink>
-					</p>
+					Вход
 				</h2>
 				{error && <span className={s.error}>{errors[error?.status]}</span>}
 				<form onSubmit={handleSubmit} className={s.form}>
 					<Input 
-					placeholder='Email' 
+					placeholder='nickname' 
 					name='email' 
 					className={s.input}
 					validation={{
@@ -47,7 +46,8 @@ export const Login = ({handleSubmit, error, formState, methods}) => {
 					}}/>
 					<Input 
 					type="password" 
-					placeholder='Пароль' name="password" 
+					placeholder='password' 
+					name="password" 
 					className={s.input}
 					validation={{
 						required: {
@@ -63,7 +63,14 @@ export const Login = ({handleSubmit, error, formState, methods}) => {
 							message: 'Максимум 50 символов',
 						},
 					}}/>
-					<Button label='Войти' className={s.button} disabled={notValid} fetching={submitting}/>
+					<p className={s.register}>
+						Нет аккаунта ? Тогда
+						<NavLink to={'/sign-up'}> зарегистрируйтесь</NavLink>
+					</p>
+					<div className={s.btns}>
+						<Button label='Войти, как артист' className={s.button} disabled={notValid} fetching={submitting}/>
+						<Button label='Войти, как покупатель' className={s.button} disabled={notValid} fetching={submitting}/>
+					</div>
 				</form>
 			</div>
 		</div>

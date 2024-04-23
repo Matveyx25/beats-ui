@@ -13,7 +13,9 @@ export const RegisterPage = () => {
 	const methods = useForm({defaultValues: {
 			email: '',
 			password: '',
+			retypePassword: '',
 			name: '',
+			role: 'buyer'
 		},	
 		mode: 'onTouched'
 	})

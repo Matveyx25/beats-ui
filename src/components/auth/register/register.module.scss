@@ -1,101 +1,52 @@
-
-
 .wrapper{
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 3.25rem 0;
+	background: rgba(21, 21, 21, 1);
+	position: relative;
+	.bg{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 0;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 	@media (max-width: $mobile-max-width) {
 		padding: 0;
 	}
 }
 .card{
-	max-width: 32rem;
+	max-width: 800px;
 	box-sizing: border-box;
 	display: flex;
-	padding: 3rem;
 	flex-direction: column;
 	align-items: center;
-	gap: 1.5rem;
+	position: relative;
+	z-index: 10;
+	gap: 80px;
 	width: 100%;
-	border-radius: 1.25rem;
-	background: #FFF;
-	border: 1px solid rgba(167, 174, 184, 0.20);
-	@media (max-width: $mobile-max-width) {
-		padding: 1.5rem;
-		border: none;
-	}
+}
+.btns{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 .title{
-	color: $text-primary;
-	align-self: self-start;
-	margin-bottom: 1rem;
-}
-.rolesTitle{
-	color: $text-primary;
+	color: #fff;
+	font-size: 48px;
 	font-weight: 500;
-	font-size: 1.25rem;
-}
-
-.textarea{
-	display: flex;
-	position: relative;
-	border-radius: 0.5rem;
-	border: 1px solid#E2E4E7;
-	background: #FFF;
-	align-items: center;
-	padding: 0.75rem 1rem;
-	gap: .75rem;
-	resize: vertical;
-	height: 14rem;
-}
-.error{
-	color: $error-main;
-	font-family: Inter;
-	font-size: 0.875rem;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 130%; /* 1.1375rem */
-	letter-spacing: 0.01563rem;
-}
-.rolesWrapper{
-	display: flex;
-	background: $secondary-primary-20;
-	width: 100%;
-	border-radius: .5rem;
-	position: relative;
-	.rolesOverlap{
-		width: 50%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		z-index: 1;
-		border-radius: .5rem;
-		left: 0;
-		transform: translateX(0);
-		background-color: $primary-main;
-		transition: .3s;
-		&.teacher{
-			transform: translateX(100%);
-		}
-	}
-	.roleBtn{
-		flex-grow: 1;
-		padding: 1rem;
-		border: none;
-		border-radius: .5rem;
-		background: none;
-		transition: .3s;
-		cursor: pointer;
-		font-weight: 600;
-		position: relative;
-		z-index: 10;
-		&.active{
-			color: #fff;
-		}
-	}
 }
 .error{
 	display: block;
@@ -110,103 +61,18 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	gap: 1rem;
-}
-.button{
-	width: 100%;
-	margin-top: .5rem;
-}
-.or{
-	text-align: center;
-	font-size: 0.875rem;
-	font-weight: 400;
-	color: $secondary-primary;
-	display: flex;
-	align-items: center;
-	gap: .75rem;
-	position: relative;
-	width: 100%;
-	&::before{
-		content: '';
-		display: block;
-		left: 0;
-		flex-grow: 1;
-		height: 1px;
-		background: rgba(167, 174, 184, 0.20);
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	&::after{
-		content: '';
-		display: block;
-		left: 0;
-		flex-grow: 1;
-		height: 1px;
-		background: rgba(167, 174, 184, 0.20);
-		top: 50%;
-		transform: translateY(-50%);
-	}
+	gap: 40px;
 }
 .input{
 	width: 100%;
 }
-
-.socialBtns{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: .75rem;
-}
 .register{
-	color: $text-primary;
-	font-size: 0.875rem;
-	align-self: self-start;
-	margin-top: 1rem;
+	color: rgba(136, 136, 136, 1);
+	font-size: 18px;
+	text-align: center;
 	a{
-		display: inline;
-		color: $primary-main;
-		font-weight: 500;
-		text-decoration: none;
-		&:hover{
-			transition: .4s color;
-			color: $primary-main;
-		}
-	}
-}
-.checkboxes{
-	display: flex;
-	flex-direction: column;
-	gap: 1.25rem;
-}
-.checkbox{
-	width: fit-content;
-	.policy{
-		font-size: 1.125rem;
-	}
-	a{
-		text-decoration: none;
-		font-weight: 600;
-		color: $primary-main;
-		&:hover{
-			transition: .4s color;
-			color: $primary-main;
-		}
-	}
-	svg{
-		min-width: 1.5rem;
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-}
-.rememberMe{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	a{
-		color: $primary-main;
-		text-decoration: none;
-		font-size: 1rem;
-		font-weight: 500;
+		display: inline-block;
+		color: #fff;
 		&:hover{
 			transition: .4s color;
 			color: $primary-main;

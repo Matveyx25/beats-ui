@@ -10,32 +10,36 @@ const errors = {
 	422: 'Почта уже используется',
 }
 
-export const Register = ({handleSubmit, referral, error, methods, formState}) => {
+export const Register = ({handleSubmit, error, methods, formState}) => {
 	const name = methods?.watch('name')
 	const email = methods?.watch('email')
 	const password = methods?.watch('password')
+	const retypePassword = methods?.watch('retypePassword')
 	const formFull = name && email && password
 
 	const notValid = (!formState.isValid && formState.isDirty) || !formFull 
+
+	const validatePasswordMatch = (value) => {
+		if (value !== password) {
+			 return 'Пароли не совпадают';
+		}
+		return true;
+	 };
 	
 	return (
 		<div className={s.wrapper}>
+			<div className={s.bg}>
+				<img src="/images/bg-register.jpg" alt="" />
+			</div>
 			<div className={s.card}>
-				<h2 className={s.title}>
-				Регистрация
-					<p className={s.register}>
-						Уже есть аккаунт?
-						<NavLink to={'/login'}> Войти</NavLink>
-					</p>
-				</h2>
+				<h2 className={s.title}>Регистрация</h2>
 				<FormProvider {...methods}>
 					{error && <span className={s.error}>{errors[error?.status]}</span>}
 					<form onSubmit={handleSubmit} className={s.form}>
 						<Input 
-							placeholder='Иван' 
+							placeholder='nickname' 
 							name='name' 
 							className={s.input}
-							title='Ваше имя'
 							validation={{
 								required: {
 									value: true,
@@ -49,17 +53,11 @@ export const Register = ({handleSubmit, referral, error, methods, formState}) =>
 									value: 255,
 									message: 'Максимум 255 символов',
 								},
-								validate: {
-									matchPattern: (v) =>
-									/^[А-ЯЁ][а-яё]*$/.test(v) ||
-										"Имя заполнено не верно",
-								},
 						}}/>
 						<Input 
-							placeholder='example@gmail.com' 
+							placeholder='e-mail' 
 							name='email' 
 							className={s.input}
-							title='Ваша эл. почта'
 							validation={{
 								required: {
 									value: true,
@@ -75,9 +73,8 @@ export const Register = ({handleSubmit, referral, error, methods, formState}) =>
 						}}/>
 						<Input 
 							type="password" 
-							placeholder='Пароль' name="password" 
+							placeholder='password' name="password" 
 							className={s.input}
-							title='Пароль'
 							validation={{
 								required: {
 									value: true,
@@ -92,7 +89,43 @@ export const Register = ({handleSubmit, referral, error, methods, formState}) =>
 									message: 'Максимум 50 символов',
 								},
 						}}/>
-						<Button label='Создать аккаунт' className={s.button} disabled={notValid}/>
+						<Input 
+							type="password" 
+							placeholder='retype password' name="retypePassword" 
+							className={s.input}
+							validation={{
+								required: {
+									value: true,
+									message: 'Поле незаполнено',
+								},
+								minLength: {
+									value: 8,
+									message: 'Минимум 8 символов',
+								},
+								maxLength: {
+									value: 50,
+									message: 'Максимум 50 символов',
+								},
+								validate: {
+									passwordMatch: validatePasswordMatch,
+								}
+						}}/>
+						<Input 
+							type="radio" 
+							name="role" 
+							className={s.input}
+							title='Выберите роль'
+							options={[
+								{ value: 'author', label: 'Я артист' },
+								{ value: 'buyer', label: 'Я покупатель' },
+							]}
+						/>
+						<p className={s.register}>
+						Уже есть аккаунт ? <br/> Тогда <NavLink to={'/login'}> войдите</NavLink>.
+						</p>
+						<div className={s.btns}>
+							<Button label='Регистрация' className={s.button} disabled={notValid}/>
+						</div>
 					</form>
 				</FormProvider>
 			</div>

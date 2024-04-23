@@ -3,13 +3,15 @@ import s from './input.module.scss'
 import { Controller, useFormContext } from 'react-hook-form'
 import { findInputError } from 'helpers/findInputError'
 import { isFormInvalid } from 'helpers/isFormInvalid'
-import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { IconCircle, IconCircleDotFilled, IconCircleFilled, IconEye, IconEyeOff } from '@tabler/icons-react'
 import ReactInputMask from 'react-input-mask'
+import classNames from 'classnames'
 
-export const Input = ({type = 'text', required, mask, placeholder, name, className, validation, value, onChange, label, leftIcon, rightIcon, onBlur, onKeyPress, title}) => {
+export const Input = ({type = 'text', options, required, mask, placeholder, name, className, validation, value, onChange, label, leftIcon, rightIcon, onBlur, onKeyPress, title}) => {
 	const {
     register,
 		control,
+		watch,
     formState: { errors },
   } = useFormContext()
 
@@ -59,6 +61,34 @@ export const Input = ({type = 'text', required, mask, placeholder, name, classNa
       />
     );
 	}
+
+	if (type === 'radio') {
+    return (
+      <div className={s.flex}>
+        {label && <p className={s.label}>{label}{required && <span> *</span>}</p>}
+        <div className={`${s.wrapperRadio} ${className} ${isInvalid && s.isInvalid}`}>
+          {options.map((option, index) => (
+            <label key={index} className={s.radioLabel}>
+              <input
+                type="radio"
+                value={option.value}
+                name={name}
+                onChange={e => onChange(e.currentTarget.value)}
+                {...(register(name, validation))}
+              />
+							<IconCircleFilled size={14} className={classNames(s.icon, watch(name) === option.value ? s.active : '')}/>
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+        {isInvalid && (
+          <span className={s.error}>
+            {inputError.error.message}
+          </span>
+        )}
+      </div>
+    );
+ }
 
 	return (
     <div className={s.flex}>
