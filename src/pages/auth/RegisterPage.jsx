@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { auth } from 'services';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getTimezone } from 'helpers/getTimezone';
 import { Register } from '../../components/auth/register/register';
+import { useRoles } from 'hooks/useRoles';
 
 export const RegisterPage = () => {
-	const { referral } = useParams();
-
 	const [error, setError] = useState('')
 
+	const {data: roles} = useRoles()
 	const methods = useForm({defaultValues: {
 			email: '',
 			password: '',
 			retypePassword: '',
 			name: '',
-			role: 'buyer'
+			role: 'author'
 		},	
 		mode: 'onTouched'
 	})
@@ -24,13 +24,13 @@ export const RegisterPage = () => {
 
 	const {formState} = methods
 
+
   const handleSubmit = methods.handleSubmit(data => {
 		const payload = {
 			email: data.email,
 			password: data.password,
-			name: data.name,
-			timezone: getTimezone(),
-			referral
+			username: data.name,
+			role_id: roles?.find(el => el.name === data.role).id
 		}
 		
 		auth.register(payload).then((res) => {
@@ -42,5 +42,5 @@ export const RegisterPage = () => {
 		})
   })
 
-	return <Register {...{handleSubmit, referral, error, methods, formState}}/>
+	return <Register {...{handleSubmit, error, methods, formState}}/>
 }

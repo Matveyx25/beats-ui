@@ -34,11 +34,11 @@ instance.interceptors.request.use((request) => {
 
 const refreshAuthLogic = async failedRequest => {
 	return instance.post('/api/refresh').then((tokenRefreshResponse) => {
-		localStorage.setItem('token', tokenRefreshResponse.data.authorisation.token)
+		localStorage.setItem('token', tokenRefreshResponse.data.token)
 		const newInstance = axios.create({
 			baseURL: process.env.REACT_APP_API_URL,
 			headers: {
-				Authorization: `Bearer ${tokenRefreshResponse.data.authorisation.token}`
+				Authorization: `Bearer ${tokenRefreshResponse.data.token}`
 			}
 		});
 		failedRequest.response.config.httpAgent = newInstance;
@@ -53,7 +53,7 @@ export const auth = {
 	login(loginPayload) {
 		return instance.post("/api/login", loginPayload)
 			.then(response => {
-				const token  =  response.data.authorisation.token;
+				const token  =  response.data.token;
 				localStorage.setItem("token", token);
 				setAuthToken(token);
 				window.location.href = '/'
@@ -63,11 +63,29 @@ export const auth = {
 		return instance.post("/api/register", payload)
 	},
 	me() {
-		return instance.get("/api/me")
+		return instance.get("/api/user")
 	},
 	logout() {
 		localStorage.removeItem("token");
 		setAuthToken();
 		window.location.href = '/'
+	},
+	getRoles() {
+		return instance.get('/api/roles')
+	}
+}
+
+export const beats = {
+	createBeat(data) {
+		return instance.post('/api/beats/create', data)
+	},
+	createDemo(data) {
+		return instance.post('/api/demo/create', data)
+	},
+	createSnippet(data) {
+		return instance.post('/api/snippets/create', data)
+	},
+	getGenres() {
+		return instance.get('/api/genres')
 	}
 }

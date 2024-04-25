@@ -65,6 +65,7 @@ export const Input = ({type = 'text', options, required, mask, placeholder, name
 	if (type === 'radio') {
     return (
       <div className={s.flex}>
+				{console.log(watch(name))}				
         {label && <p className={s.label}>{label}{required && <span> *</span>}</p>}
         <div className={`${s.wrapperRadio} ${className} ${isInvalid && s.isInvalid}`}>
           {options.map((option, index) => (

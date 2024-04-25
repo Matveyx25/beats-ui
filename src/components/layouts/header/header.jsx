@@ -1,19 +1,21 @@
 import React from 'react'
 import s from './header.module.scss'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { Button } from 'shared/button/button';
+import { NavLink } from 'react-router-dom';
+import { useProfile } from '../../../hooks/useProfile';
+import gravatar from 'gravatar'
 
 export const Header = () => {
-	const location = useLocation()
-	const navigate = useNavigate()
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register'
+	const {data: profile} = useProfile()
 
 	return (
-		<header className={`${s.wrapper} ${isAuthPage && s.isAuth}`}>
+		<header className={s.wrapper}>
 			<div className='container'>
 				<div className={s.flex}>
 					<div className={s.btns}>
-						<Button label={'Войти'} className={s.btn} onClick={() => navigate('/login')}/>
+						<NavLink to={'/feed'} className={s.link}>Лента</NavLink>
+						<NavLink to={'/profile'} className={s.profile}>
+							<img src={gravatar.url(profile?.email, {s: '100', r: 'x', d: 'retro'}, false)} alt="" />
+						</NavLink>
 					</div>
 				</div>
 			</div>

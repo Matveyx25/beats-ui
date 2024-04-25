@@ -27,7 +27,7 @@
 	gap: .75rem;
 	padding: 20px 0px 20px 0px;
 	input:-webkit-autofill,
-	inpinput:-webkit-autofill,
+	input:-webkit-autofill,
 	input:-webkit-autofill:hover, 
 	input:-webkit-autofill:focus, 
 	input:-webkit-autofill:active{
@@ -45,7 +45,6 @@
 		font-weight: 400;		
 		flex: 1;
 		color: #fff;
-
 		&::placeholder{
 			color: #fff;
 		}
@@ -92,12 +91,12 @@
 		gap: 10px;
 	}
 	.icon{
-		color: #ffffff00;
+		color: rgba(217, 217, 217, 0) !important;
 		border: 1px solid rgba(217, 217, 217, 0.2);
 		border-radius: 100%;
 		padding: 2px;
 		&.active{
-			color: rgba(217, 217, 217, 0.2);
+			color: rgba(217, 217, 217, 0.2) !important;
 			transition: .4s;
 		}
 	}

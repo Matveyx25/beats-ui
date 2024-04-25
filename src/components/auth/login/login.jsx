@@ -13,8 +13,7 @@ export const Login = ({handleSubmit, error, formState, methods}) => {
 	const password = methods?.watch('password')
 	const formFull = email && password
 
-	const submitting = formState.isSubmitting || (formState.isSubmitted && !error)
-	const notValid = (!formState.isValid && formState.isDirty) || !formFull  || submitting
+	const notValid = (!formState.isValid && formState.isDirty) || !formFull
 
 	return (
 		<div className={s.wrapper}>
@@ -68,8 +67,7 @@ export const Login = ({handleSubmit, error, formState, methods}) => {
 						<NavLink to={'/sign-up'}> зарегистрируйтесь</NavLink>
 					</p>
 					<div className={s.btns}>
-						<Button label='Войти, как артист' className={s.button} disabled={notValid} fetching={submitting}/>
-						<Button label='Войти, как покупатель' className={s.button} disabled={notValid} fetching={submitting}/>
+						<Button label='Войти' className={s.button} disabled={notValid}/>
 					</div>
 				</form>
 			</div>

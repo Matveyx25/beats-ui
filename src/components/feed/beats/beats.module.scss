@@ -1,0 +1,98 @@
+
+.beatsWrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	padding-bottom: 40px;
+	.beatsTable{
+		border-collapse: collapse;
+		table-layout: fixed; 
+	}
+	th{
+		padding: 30px 0;
+		font-size: 18px;
+		font-weight: 400;
+		text-align: left;
+		color: rgba(136, 136, 136, 1);
+		width: 20%;
+		&:last-child{
+			width: 100px;
+		}
+		&:first-child{
+			width: 100px;
+		}
+	}
+	thead{
+		border-bottom: 1px solid rgba(136, 136, 136, 1);
+	}
+	tr{
+		border-bottom: 1px solid rgba(136, 136, 136, 1);
+	}
+	td{
+		font-weight: 400;
+		line-height: 21.78px;
+		text-align: left;
+		font-size: 18px;
+		padding: 30px 0;
+		&:last-child{
+			width: 100px;
+			text-align: right;
+		}
+		&:first-child{
+			width: 100px;
+		}
+	}
+	.beatPercents{
+		width: fit-content;
+		padding: 5px 20px;
+		border-radius: 100px;
+		border: 1px solid rgba(255, 255, 255, 0.2)
+	}
+	a{
+		text-decoration: none;
+		color: #fff;
+	}
+}
+.smallBtn{
+	padding: 5px 20px;
+}
+.beatsHeader{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.sorts{
+		display: flex;
+		gap: 40px;
+		align-items: center;
+		.sortFlex{
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 21.78px;
+			cursor: pointer;
+		}
+	}
+}
+.header{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	.title{
+		font-size: 48px;
+		font-weight: 500;
+		line-height: 58.09px;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	.subtitle{
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 21.78px;
+		text-align: left;
+		color: rgba(136, 136, 136, 1);
+	}
+}

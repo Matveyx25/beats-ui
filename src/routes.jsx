@@ -8,10 +8,13 @@ import { useProfile } from "hooks/useProfile";
 import { MainLayout } from './components/layouts/main-layout/main';
 import { LoginPage } from "pages/auth/LoginPage";
 import { RegisterPage } from 'pages/auth/RegisterPage';
+import { Feed } from "./pages/client/Feed/Feed";
+import { Author } from "./pages/client/Author/Author";
+import { Beat } from "./pages/client/Beat/Beat";
+import { Profile } from "./pages/author/Profile/Profile";
 
 export function Routes() {
 	const {data: profile} = useProfile()
-
 
   function hasJWT() {
     let flag = false;
@@ -24,22 +27,30 @@ export function Routes() {
     <>
       <RouterDomRoutes>
         {hasJWT() ?
-						{
-							client: (
-								<Route element={<MainLayout />}>
-									
-								</Route>
-							),
-							author: (
-								<Route element={<MainLayout />}>
-
-								</Route>
-							),
-						}[profile?.role] : (
+						<>
+							{{
+								1: (
+									<Route element={<MainLayout />}>
+										<Route path="/" element={<Feed />} />
+										<Route path="/profile" element={<Profile />} />
+										<Route path="/author/:authorId" element={<Author />} />
+										<Route path="/beat/:beatId" element={<Beat />} />
+									</Route>
+								),
+								2: (
+									<Route element={<MainLayout />}>
+										<Route path="/" element={<Feed />} />
+										<Route path="/author/:authorId" element={<Author />} />
+										<Route path="/beat/:beatId" element={<Beat />} />
+									</Route>
+								),
+							}[profile?.RoleID]}
+						</>
+						 : (
 					<>
-						<Route path="/login" element={<LoginPage />} />
-						<Route path="/sign-up/:referral?" element={<RegisterPage />} />
-						<Route path="*" element={<Navigate to="/login" />} />
+						<Route path="/" element={<LoginPage />} />
+						<Route path="/sign-up" element={<RegisterPage />} />
+						<Route path="*" element={<Navigate to="/" />} />
 					</>
 				)
        }

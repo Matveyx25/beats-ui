@@ -14,7 +14,6 @@ export const Register = ({handleSubmit, error, methods, formState}) => {
 	const name = methods?.watch('name')
 	const email = methods?.watch('email')
 	const password = methods?.watch('password')
-	const retypePassword = methods?.watch('retypePassword')
 	const formFull = name && email && password
 
 	const notValid = (!formState.isValid && formState.isDirty) || !formFull 
@@ -117,7 +116,7 @@ export const Register = ({handleSubmit, error, methods, formState}) => {
 							title='Выберите роль'
 							options={[
 								{ value: 'author', label: 'Я артист' },
-								{ value: 'buyer', label: 'Я покупатель' },
+								{ value: 'client', label: 'Я покупатель' },
 							]}
 						/>
 						<p className={s.register}>
