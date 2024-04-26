@@ -29,7 +29,7 @@ export function Routes() {
         {hasJWT() ?
 						<>
 							{{
-								1: (
+								'author': (
 									<Route element={<MainLayout />}>
 										<Route path="/" element={<Feed />} />
 										<Route path="/profile" element={<Profile />} />
@@ -37,14 +37,14 @@ export function Routes() {
 										<Route path="/beat/:beatId" element={<Beat />} />
 									</Route>
 								),
-								2: (
+								'client': (
 									<Route element={<MainLayout />}>
 										<Route path="/" element={<Feed />} />
 										<Route path="/author/:authorId" element={<Author />} />
 										<Route path="/beat/:beatId" element={<Beat />} />
 									</Route>
 								),
-							}[profile?.RoleID]}
+							}[profile?.role?.name]}
 						</>
 						 : (
 					<>

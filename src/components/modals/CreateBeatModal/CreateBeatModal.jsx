@@ -5,10 +5,12 @@ import { Input } from 'shared/input/input';
 import { Button } from 'shared/button/button';
 import { Select } from 'shared/select/Select';
 import s from './CreateBeatModal.module.scss'
-import { useCreateBeat } from '../../../hooks/useCreateBeat';
+import { useCreateBeat } from 'hooks/useCreateBeat';
+import { useGenres } from 'hooks/useGenres';
 
 export const CreateBeatModal = ({isOpen, setOpen}) => {
 	const {mutate: createBeat} = useCreateBeat()
+	const {data: genres} = useGenres()
 	
 	const methods = useForm({
 		mode: 'onTouched'
@@ -64,11 +66,7 @@ export const CreateBeatModal = ({isOpen, setOpen}) => {
 					control={methods.control}
 					name={'genre_id'}
 					placeholder={'Выбрать жанр'}
-					options={[
-							{value: 1, label: 'Genre 1'},
-							{value: 2, label: 'Genre 2'},
-							{value: 3, label: 'Genre 3'},
-						]}/>
+					options={genres?.map(el => ({value: el.id, label: el.name}))}/>
 					<div className={s.btns}>
 						<Button label='Создать' className={s.button}/>
 					</div>

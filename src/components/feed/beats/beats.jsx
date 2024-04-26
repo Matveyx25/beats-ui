@@ -18,9 +18,9 @@ export const Beats = ({ beats }) => {
     <div className={s.beatsWrapper}>
       <div className={s.beatsHeader}>
         <div className={s.header}>
-          {profile.RoleID !== 1 ? <div className={s.subtitle}>САМОЕ НОВОЕ</div> : null}
+          {profile?.role?.name !== 'author' ? <div className={s.subtitle}>САМОЕ НОВОЕ</div> : null}
           <div className={s.title}>Биты 
-					{profile.RoleID === 1 ? <Button onClick={() => setModal('create-beat-modal')} label={<IconPlus size={16}/>} className={s.smallBtn}/> : null}
+					{profile?.role?.name === 'author' ? <Button onClick={() => setModal('create-beat-modal')} label={<IconPlus size={16}/>} className={s.smallBtn}/> : null}
 					</div>
         </div>
         <div className={s.sorts}>
