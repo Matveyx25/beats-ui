@@ -87,5 +87,20 @@ export const beats = {
 	},
 	getGenres() {
 		return instance.get('/api/genres')
+	},
+	getBeats() {
+		return instance.get('/api/beats')
+	},
+	getBeatById(id) {
+		return instance.get('/api/beats/' + id)
+	},
+	getAuthors() {
+		return instance.get('/api/artists')
+	},
+	getAuthorById(id) {
+		return instance.get('/api/artists/' + id)
+	},
+	editLicense(data) {
+		return instance.post(`/api/beats/${data.beatId}/licenses/${data.licenseId}/edit`, {price: +data?.price, is_active: data?.is_active, rental_time: data?.rental_time})
 	}
 }

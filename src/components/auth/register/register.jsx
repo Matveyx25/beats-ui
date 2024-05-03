@@ -115,7 +115,7 @@ export const Register = ({handleSubmit, error, methods, formState}) => {
 							className={s.input}
 							title='Выберите роль'
 							options={[
-								{ value: 'author', label: 'Я артист' },
+								{ value: 'artist', label: 'Я артист' },
 								{ value: 'client', label: 'Я покупатель' },
 							]}
 						/>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { BackButton } from '../../../components/shared/backButton/backButton'
 import s from './Beat.module.scss'
+import { IconInfoCircle } from '@tabler/icons-react'
+import { Button } from '../../../components/shared/button/button'
 
 export const Beat = () => {
 	return (
@@ -42,7 +44,33 @@ export const Beat = () => {
 					</div>
 					<div className={s.sellsFlex}>
 						<div className={s.sellsBlock}>
-							
+							<div className={s.sellsHeader}>
+								<div className={s.sellsTitle}>Non-inclusive <IconInfoCircle size={20} color='rgba(255, 255, 255, 0.2)'/></div>
+								<Button label="Купить" className={s.smallBtn}/>
+							</div>
+							<div className={s.sellsInfo}>
+								<div className={s.sellsLabel}>Данный бит сдан в лизинг:</div>
+								<div className={s.sellsValue}>5 людям</div>
+							</div>
+							<div className={s.sellsPrice}>2000 ₽</div>
+						</div>
+						<div className={s.sellsBlock}>
+							<div className={s.sellsHeader}>
+								<div className={s.sellsTitle}>Inclusive <IconInfoCircle size={20} color='rgba(255, 255, 255, 0.2)'/></div>
+								<Button label="Купить" className={s.smallBtn}/>
+							</div>
+							<div className={s.sellsInfo}>
+								<div className={s.sellsLabel}>Данный бит сдан в лизинг:</div>
+								<div className={s.sellsValue}>1 людям</div>
+							</div>
+							<div className={s.sellsPrice}>2000 ₽</div>
+						</div>
+						<div className={s.sellsBlock}>
+							<div className={s.sellsHeader}>
+								<div className={s.sellsTitle}>Transfer of right <IconInfoCircle size={20} color='rgba(255, 255, 255, 0.2)'/></div>
+								<Button label="Купить" className={s.smallBtn}/>
+							</div>
+							<div className={s.sellsPrice}>2000 ₽</div>
 						</div>
 					</div>
 				</div>

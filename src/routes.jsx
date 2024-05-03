@@ -11,6 +11,7 @@ import { RegisterPage } from 'pages/auth/RegisterPage';
 import { Feed } from "./pages/client/Feed/Feed";
 import { Author } from "./pages/client/Author/Author";
 import { Beat } from "./pages/client/Beat/Beat";
+import { Beat as AuthorBeat } from "./pages/author/Beat/Beat";
 import { Profile } from "./pages/author/Profile/Profile";
 
 export function Routes() {
@@ -29,12 +30,12 @@ export function Routes() {
         {hasJWT() ?
 						<>
 							{{
-								'author': (
+								'artist': (
 									<Route element={<MainLayout />}>
 										<Route path="/" element={<Feed />} />
 										<Route path="/profile" element={<Profile />} />
 										<Route path="/author/:authorId" element={<Author />} />
-										<Route path="/beat/:beatId" element={<Beat />} />
+										<Route path="/beat/:beatId" element={<AuthorBeat />} />
 									</Route>
 								),
 								'client': (
@@ -44,7 +45,7 @@ export function Routes() {
 										<Route path="/beat/:beatId" element={<Beat />} />
 									</Route>
 								),
-							}[profile?.role?.name]}
+							}[profile?.role?.type]}
 						</>
 						 : (
 					<>

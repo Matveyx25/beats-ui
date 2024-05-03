@@ -2,18 +2,6 @@
 
 .flex{
 	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	width: 100%;
-	justify-content: space-between;
-	.label{
-		color: $text-primary;
-		font-size: 0.875rem;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 130%; /* 1.1375rem */
-		letter-spacing: 0.01563rem;
-	}
 }
 
 .wrapper{
@@ -36,6 +24,6 @@
 	}
 	&.active{
 		padding: 0.125rem 0.125rem 0.125rem 1.5rem;
-		background: $primary-main;
+		background: rgba(104, 119, 252, 1);
 	}
 }

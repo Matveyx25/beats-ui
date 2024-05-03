@@ -3,6 +3,8 @@ import s from './Feed.module.scss'
 import { Snippet } from '../../../components/feed/snippet/snippet'
 import { Author } from '../../../components/feed/author/author'
 import { Beats } from '../../../components/feed/beats/beats'
+import { useBeats } from '../../../hooks/useBeats';
+import { useAuthors } from '../../../hooks/useAuthors';
 
 const snippets = [
 	{
@@ -40,75 +42,10 @@ const snippets = [
 	},
 ]
 
-const authors = [
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-	{
-		img: 'https://upload.wikimedia.org/wikipedia/ru/d/dc/MichaelScott.png',
-		name: 'Название артиста'
-	},
-]
-
-const beats = [
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-]
-
 export const Feed = () => {
+	const {data: beats} = useBeats()
+	const {data: authors} = useAuthors()
+ 
 	return (
 		<div className={s.wrapper}>
 			<div className="container">
@@ -131,7 +68,7 @@ export const Feed = () => {
 								<div className={s.subtitle}>ТОП</div>
 								<div className={s.title}>Артисты</div>
 								<div className={s.authorsFlex}>
-									{authors.map(el => <Author {...el}/>)}
+									{authors?.map(el => <Author {...el}/>)}
 								</div>
 							</div>
 						</div>

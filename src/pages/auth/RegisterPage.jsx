@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { auth } from 'services';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getTimezone } from 'helpers/getTimezone';
 import { Register } from '../../components/auth/register/register';
 import { useRoles } from 'hooks/useRoles';
 
@@ -15,7 +14,7 @@ export const RegisterPage = () => {
 			password: '',
 			retypePassword: '',
 			name: '',
-			role: 'author'
+			role: 'artist'
 		},	
 		mode: 'onTouched'
 	})

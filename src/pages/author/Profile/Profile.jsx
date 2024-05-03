@@ -6,18 +6,11 @@ import { useProfile } from '../../../hooks/useProfile';
 import gravatar from 'gravatar'
 import { Button } from '../../../components/shared/button/button';
 import { IconEdit, IconPencil } from '@tabler/icons-react';
-
-const beats = [
-	{
-		name:'НАЗВАНИЕ',
-		genre:'Жанр',
-		author:'АРТИСТ',
-		duration:'ДЛИТЕЛЬНОСТЬ',
-	},
-]
+import { useAuthorById } from '../../../hooks/useAuthorById';
 
 export const Profile = () => {
 	const {data: profile} = useProfile()
+	const {data: artist} = useAuthorById(profile?.id)
 
 	return (
 		<div className={s.wrapper}>
@@ -32,7 +25,7 @@ export const Profile = () => {
 						<img src={gravatar.url(profile?.email, {s: '100', r: 'x', d: 'retro'}, false)} alt="" />
 					</div>
 				</div>
-				<Beats {...{beats}}/> 
+				<Beats beats={artist?.beats.map(el => ({...el, user: profile}))}/> 
 			</div>
 		</div>
 	)
