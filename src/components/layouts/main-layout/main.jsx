@@ -16,8 +16,6 @@ export const MainLayout = () => {
 	const location = useLocation()
   const isSecondBg = ['profile', 'author'].includes(location.pathname.split('/')[1])
 
-
-
 	return (
 		<div>
 			<Modals isOpen={modal} setOpen={setOpen} {...{modalParams, setModalParams}}/>

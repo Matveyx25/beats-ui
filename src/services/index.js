@@ -102,5 +102,11 @@ export const beats = {
 	},
 	editLicense(data) {
 		return instance.post(`/api/beats/${data.beatId}/licenses/${data.licenseId}/edit`, {price: +data?.price, is_active: data?.is_active, rental_time: data?.rental_time})
+	},
+	buyBeat(data) {
+		return instance.post(`/api/beats/${data.beatId}/purchase`, {license_id: data.licenseId})
+	},
+	getPurchased() {
+		return instance.get('/api/beats/purchased')
 	}
 }

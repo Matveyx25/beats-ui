@@ -13,6 +13,7 @@ import { Author } from "./pages/client/Author/Author";
 import { Beat } from "./pages/client/Beat/Beat";
 import { Beat as AuthorBeat } from "./pages/author/Beat/Beat";
 import { Profile } from "./pages/author/Profile/Profile";
+import { Profile as ClientProfile } from "./pages/client/Profile/Profile";
 
 export function Routes() {
 	const {data: profile} = useProfile()
@@ -26,36 +27,40 @@ export function Routes() {
 
   return (
     <>
-      <RouterDomRoutes>
         {hasJWT() ?
 						<>
 							{{
 								'artist': (
-									<Route element={<MainLayout />}>
-										<Route path="/" element={<Feed />} />
-										<Route path="/profile" element={<Profile />} />
-										<Route path="/author/:authorId" element={<Author />} />
-										<Route path="/beat/:beatId" element={<AuthorBeat />} />
-									</Route>
+									<RouterDomRoutes>
+										<Route element={<MainLayout />}>
+											<Route path="/profile" element={<Profile />} />
+											<Route path="/author/:authorId" element={<Author />} />
+											<Route path="/beat/:beatId" element={<AuthorBeat />} />
+											<Route path="*" element={<Navigate to="/profile" />} />
+										</Route>
+									</RouterDomRoutes>
 								),
 								'client': (
-									<Route element={<MainLayout />}>
-										<Route path="/" element={<Feed />} />
-										<Route path="/author/:authorId" element={<Author />} />
-										<Route path="/beat/:beatId" element={<Beat />} />
-									</Route>
+									<RouterDomRoutes>
+										<Route element={<MainLayout />}>
+											<Route path="/" element={<Feed />} />
+											<Route path="/author/:authorId" element={<Author />} />
+											<Route path="/beat/:beatId" element={<Beat />} />
+											<Route path="/profile" element={<ClientProfile />} />
+											<Route path="*" element={<Navigate to="/" />} />
+										</Route>
+									</RouterDomRoutes>
 								),
 							}[profile?.role?.type]}
 						</>
 						 : (
-					<>
+					<RouterDomRoutes>
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/sign-up" element={<RegisterPage />} />
 						<Route path="*" element={<Navigate to="/" />} />
-					</>
+					</RouterDomRoutes>
 				)
        }
-      </RouterDomRoutes>
     </>
   );
 }

@@ -1,16 +1,16 @@
 import React from 'react'
 import s from './Profile.module.scss'
-import { Beats } from '../../../components/feed/beats/beats';
 import { useProfile } from '../../../hooks/useProfile';
 import { Button } from '../../../components/shared/button/button';
 import { IconPencil } from '@tabler/icons-react';
-import { useAuthorById } from '../../../hooks/useAuthorById';
 import { auth } from 'services';
 import { getAvatar } from '../../../helpers/getAvatar';
+import { usePurchasedBeats } from '../../../hooks/usePurchasedBeats';
+import { Beats } from '../../../components/feed/beats/beats';
 
 export const Profile = () => {
 	const {data: profile} = useProfile()
-	const {data: artist} = useAuthorById(profile?.id)
+	const {data: beats} = usePurchasedBeats()
 
 	return (
 		<div className={s.wrapper}>
@@ -24,7 +24,7 @@ export const Profile = () => {
 						<img src={getAvatar(profile?.email)} alt="" />
 					</div>
 				</div>
-				<Beats beats={artist?.beats.map(el => ({...el, user: profile}))}/> 
+				<Beats {...{beats}} title="Сделки" hideSubtitle/> 
 				<Button label="Выйти" className={s.logout} onClick={() => auth.logout()}/>
 			</div>
 		</div>
