@@ -72,7 +72,10 @@ export const auth = {
 	},
 	getRoles() {
 		return instance.get('/api/roles')
-	}
+	},
+	updateProfile(data) {
+		return instance.put('/api/user', data)
+	},
 }
 
 export const beats = {
@@ -93,6 +96,18 @@ export const beats = {
 	},
 	getBeatById(id) {
 		return instance.get('/api/beats/' + id)
+	},
+	updateBeat(data) {
+		return instance.put('/api/beats/' + data.id, data.payload)
+	},
+	deleteBeat(id) {
+		return instance.delete('/api/beats/' + id)
+	},
+	hideBeat(id) {
+		return instance.post('/api/beats/' + id + '/hide')
+	},
+	unhideBeat(id) {
+		return instance.post('/api/beats/' + id + '/unhide')
 	},
 	getAuthors() {
 		return instance.get('/api/artists')

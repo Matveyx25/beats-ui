@@ -111,7 +111,7 @@ export const Input = ({type = 'text', options, required, mask, placeholder, name
 						e.preventDefault()
 						setIsHidden((prev) => !prev)
 						}}>
-            {isHidden ? <IconEye size={18}/> : <IconEyeOff size={18}/>}
+            {isHidden ? <IconEye size={18} color='#fff'/> : <IconEyeOff size={18} color='#fff'/>}
           </button>
         }
 				{rightIcon}
