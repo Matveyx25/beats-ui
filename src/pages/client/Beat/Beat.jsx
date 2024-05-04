@@ -54,7 +54,7 @@ export const Beat = () => {
 						<img src={beat?.photo} alt="" />
 					</div>
 					<div className={s.previewInfo}>
-            <div className={s.genre}>{beat?.genreID}</div>
+					<div className={s.genre}>{beat?.genre?.name}</div>
             <div className={s.name}>{beat?.title}</div>
             <div className={s.author}>{beat?.user?.name}</div>
           </div>

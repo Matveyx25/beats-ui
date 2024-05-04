@@ -5,45 +5,11 @@ import { Author } from '../../../components/feed/author/author'
 import { Beats } from '../../../components/feed/beats/beats'
 import { useBeats } from '../../../hooks/useBeats';
 import { useAuthors } from '../../../hooks/useAuthors';
-
-const snippets = [
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-		status: 'verified'
-	},
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-	},
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-		status: 'verified'
-	},
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-	},
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-	},
-	{
-		name: "вышел покурить",
-		start: '2:30',
-		end: ' 2:40',
-		status: 'verified'
-	},
-]
+import { useSnippets } from '../../../hooks/useSnippets';
 
 export const Feed = () => {
 	const {data: beats} = useBeats()
+	const {data: snippets} = useSnippets()
 	const {data: authors} = useAuthors()
  
 	return (
@@ -57,7 +23,7 @@ export const Feed = () => {
 					<div className={s.main}>
 						<div className={s.snippetsWrapper}>
 							<div className={s.snippetsFlex}>
-								{snippets.map(el => <Snippet {...el}/>)}
+								{snippets && snippets.map(el => <Snippet {...el}/>)}
 							</div>
 						</div>
 						<Beats {...{beats}}/>

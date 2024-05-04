@@ -31,10 +31,11 @@
 		max-width: 70%;
 		flex: 1;
 		gap: 80px;
+		width: 100%;
 	}
 	.sidebar{
 		flex-grow: 1;
-		width: 30%;
+		max-width: 30%;
 	}
 }
 .snippetsWrapper{

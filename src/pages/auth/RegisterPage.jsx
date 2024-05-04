@@ -33,9 +33,7 @@ export const RegisterPage = () => {
 		}
 		
 		auth.register(payload).then((res) => {
-			if(res.data.status === "success"){
-				navigate('/waiting-confirm')
-			}
+			navigate('/')
 		}).catch((response) => {
 			setError(response.response)
 		})

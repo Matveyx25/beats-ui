@@ -91,6 +91,9 @@ export const beats = {
 	getGenres() {
 		return instance.get('/api/genres')
 	},
+	getSnippets() {
+		return instance.get('/api/snippets')
+	},
 	getBeats() {
 		return instance.get('/api/beats')
 	},
@@ -116,7 +119,7 @@ export const beats = {
 		return instance.get('/api/artists/' + id)
 	},
 	editLicense(data) {
-		return instance.post(`/api/beats/${data.beatId}/licenses/${data.licenseId}/edit`, {price: +data?.price, is_active: data?.is_active, rental_time: data?.rental_time})
+		return instance.put(`/api/beats/${data.beatId}/licenses/${data.licenseId}`, {price: +data?.price, is_active: data?.is_active, rental_time: data?.rental_time})
 	},
 	buyBeat(data) {
 		return instance.post(`/api/beats/${data.beatId}/purchase`, {license_id: data.licenseId})
