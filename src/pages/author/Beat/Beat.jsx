@@ -72,7 +72,7 @@ const LicenseGroup = ({ beat, name, label, peopleCount }) => {
 
   const handleSubmit = methods.handleSubmit((data) => {
     editLicense({ ...data,
-			is_active: (data?.price && data?.rental_time) ? data?.is_active : false,
+			is_active: (data?.price && (data?.rental_time || name === "tor")) ? data?.is_active : false,
 			 beatId: beat.id, licenseId: getLicense(name).id });
   });
 
@@ -84,7 +84,7 @@ const LicenseGroup = ({ beat, name, label, peopleCount }) => {
             {label + " "}
             <IconInfoCircle size={20} color="rgba(255, 255, 255, 0.2)" />
           </div>
-          {((name === "tor" ||methods.watch('rental_time')) && methods.watch('price')) && <Toggle name="is_active" onChange={handleSubmit} />}
+          {((name === "tor" ||methods.watch('rental_time')) && methods.watch('price')) ? <Toggle name="is_active" onChange={handleSubmit} /> : null}
         </div>
         {peopleCount && (
           <div className={s.sellsInfo}>

@@ -36,7 +36,7 @@ export const Purchases = ({beats}) => {
 								<tr>
 									<td>{el.license?.licenseType.name}</td>
 									<td></td>
-									<td>Данный бит сдан в лизинг: {el.purchased +
+									<td>Данный бит сдан в лизинг: {el?.license.purchased +
                 " " +
                 getNoun(el.purchased, "человеку", "людям", "людям")}</td>
 									<td></td>

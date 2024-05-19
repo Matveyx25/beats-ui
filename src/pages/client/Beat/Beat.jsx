@@ -32,7 +32,7 @@ const LicenseGroup = ({beat ,name, label, peopleCount}) => {
 				</div>
 				{peopleCount && <div className={s.sellsInfo}>
 					<div className={s.sellsLabel}>Данный бит сдан в лизинг:</div>
-					<div className={s.sellsValue}>{peopleCount + ' ' + getNoun(peopleCount, 'человеку', 'людям', 'людям')}</div>
+					<div className={s.sellsValue}>{getLicense(name).purchased + ' ' + getNoun(getLicense(name).purchased, 'человеку', 'людям', 'людям')}</div>
 				</div>}
 				{getLicense(name).price +  " ₽"  || 'цена не указана'}
 			</div>
