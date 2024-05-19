@@ -10,7 +10,7 @@ import { NavLink, useOutletContext } from "react-router-dom";
 import { useProfile } from "../../../hooks/useProfile";
 import { Button } from "../../shared/button/button";
 
-export const Beats = ({ beats, title, subtitle, hideSubtitle }) => {
+export const Beats = ({ beats, title, subtitle, hideSubtitle, isPurchased }) => {
 	const {data: profile} = useProfile()
 	const [setModal] = useOutletContext()
 
@@ -55,21 +55,25 @@ export const Beats = ({ beats, title, subtitle, hideSubtitle }) => {
           <th></th>
         </thead>
         <tbody>
-          {beats?.map((el) => (
+          {beats?.map((el) =>{
+					
+					const data = isPurchased ? el.beat : el
+
+					return (
             <tr>
               <td>
                 <div className={s.beatPercents}>100</div>
               </td>
-              <td>{el?.title}</td>
-              <td>{el?.genre?.name}</td>
-              <td>{el?.user?.name}</td>
+              <td>{data?.title}</td>
+              <td>{data?.genre?.name}</td>
+              <td>{data?.user?.name}</td>
               <td>
-                <NavLink to={"/beat/" + el.id}>
+                <NavLink to={"/beat/" + data.id}>
                   <IconArrowUpRight />
                 </NavLink>
               </td>
             </tr>
-          ))}
+          )})}
         </tbody>
       </table>
     </div>

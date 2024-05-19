@@ -8,6 +8,7 @@ import { getAvatar } from '../../../helpers/getAvatar';
 import { usePurchasedBeats } from '../../../hooks/usePurchasedBeats';
 import { Beats } from '../../../components/feed/beats/beats';
 import { useOutletContext } from 'react-router-dom';
+import { Purchases } from '../../../components/feed/purchases/purchases';
 
 export const Profile = () => {
 	const {data: profile} = useProfile()
@@ -26,7 +27,7 @@ export const Profile = () => {
 						<img src={getAvatar(profile?.email)} alt="" />
 					</div>
 				</div>
-				<Beats {...{beats}} title="Сделки" hideSubtitle/> 
+				<Purchases beats={beats}/> 
 				<Button label="Выйти" className={s.logout} onClick={() => auth.logout()}/>
 			</div>
 		</div>
